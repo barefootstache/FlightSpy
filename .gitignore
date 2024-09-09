@@ -1,1 +1,3 @@
 flightcache
+dist/*
+!dist/.gitkeep

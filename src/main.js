@@ -1,3 +1,5 @@
+import { main } from './flight_spy.js';
+
 let flightID;
 
 const inputFlightURL  = document.getElementById('flightURL');
@@ -19,12 +21,13 @@ inputFlightID.addEventListener('input', (event) => {
 
 submitBtn.addEventListener('click', (event) => {
   if(flightID !== '') {
-    import('./flight_spy.js')
-      .then(module => {
-        module.main(flightID)
-      })
-      .catch(err => {
-        console.error('Failed to load the module:', err);
-      })
+    main(flightID);
+    // import('./flight_spy.js')
+    //   .then(module => {
+    //     module.main(flightID)
+    //   })
+    //   .catch(err => {
+    //     console.error('Failed to load the module:', err);
+    //   })
   }
 });
