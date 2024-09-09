@@ -6,7 +6,10 @@ Before you fly, determine what'll be outside your window.
 
 1. Clone the repo.
 2. Make sure that `npm` exists and install dependencies via `npm ci`.
-3. Read the comments in `index.js` and make the necessary changes. The comments are
+
+### Local via Node
+
+1. Read the comments in `index.js` and make the necessary changes. The comments are
     How to get this flight ID:
     1. Visit https://www.flightradar24.com/
     2. Search for the code number (top right)
@@ -15,7 +18,12 @@ Before you fly, determine what'll be outside your window.
     4. Review the list to find a complete flight
     5. Click on the 'Play' button
     6. Notice the URL contains both the route ID, followed by a #, and another ID - use this one
-4. Run the code via `node index.js`.
+2. Run the code via `node index.js`.
+
+### Local via browser
+
+1. Run `npm run build` to build the project.
+2. Run `npm run start` to start the project on your default browser.
 
 ## Optional
 
