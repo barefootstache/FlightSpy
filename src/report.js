@@ -20,12 +20,14 @@ class Report {
     
                 ignoreList.push(interest.id);
     
-                if (typeof options.translator === typeof undefined) {
-                    return { name: interest.name, description: interest.description ? interest.description : '' };
+                if(options) {
+                    if (typeof options.translator === typeof undefined) {
+                        return { name: interest.name, description: interest.description ? interest.description : '' };
+                    }
+        
+                    const text = await options.translator(interest.name, "en");
+                    return { name: `${interest.name} ${text && text !== interest.name ? '('+text+')' : ''}`, description: interest.description ? interest.description : ''};
                 }
-    
-                const text = await options.translator(interest.name, "en");
-                return { name: `${interest.name} ${text && text !== interest.name ? '('+text+')' : ''}`, description: interest.description ? interest.description : ''};
             });
             
             let toShow = await Promise.all(unresolvedPromises);

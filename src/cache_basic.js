@@ -31,7 +31,7 @@ class BasicCache {
         } catch (err) {
             // Cache miss- not an error, but during development you might
             // want to flick this back on.
-            //console.error(err.message);
+            console.error(err.message);
         }
 
         return undefined;

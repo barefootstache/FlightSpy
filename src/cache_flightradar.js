@@ -22,6 +22,7 @@ class FlightCache extends BasicCache {
 
     async getFlightData(flightID, options) {
         const flight = await this.callFetchFlight(flightID);
+    console.log(flight.trail);
     
         flight.trail = flight.trail.reverse();
        

@@ -6,24 +6,6 @@ import { Report } from './report.js'
 import * as Utils from './utils.js'
 
 
-// Pre-requistes:
-// 1. Run https://github.com/LibreTranslate/LibreTranslate on port 5000
-//    (otherwise, remove ltranslate option around line 98)
-//
-// 2. Use my fork (https://github.com/MarquisdeGeek/flightradar24-client) of flight radar module, that returns trail data.
-
-
-// Specific the ID
-const flightID = `36e9026e`;
-
-// How to get this flight ID:
-// 1. Visit https://www.flightradar24.com/
-// 2. Search for the code number (top right)
-// 3. Click on the 'Recent or schedule flights" option.
-//    (this should open a page of flight history for that route)
-// 4. Review the list to find a complete flight
-// 5. Click on the 'Play' button
-// 6. Notice the URL contains both the route ID, followed by a #, and another ID - use this one
 
 
 // Working parameters
@@ -56,7 +38,7 @@ async function main(id) {
     // Request the map data for each trail point
     // Note the delay and waitDuration to stop flooding the server
     let waitDuration = 0;
-    let unresolvedPromises = await flightData.map(async (pos) => {
+    let unresolvedPromises = flightData.map(async (pos) => {
 
         let area = Utils.getSurroundArea(pos.latitude, pos.longitude, mapAreaRadius);
         let cachedData = await apiMapping.getGetMapDataCache(area);
@@ -92,11 +74,11 @@ async function main(id) {
 
     // Show a report
     const report = new Report(flightPoints);
+    const options = {translator: ltranslate};
 
-    let reportData = await report.process({
-        translator: ltranslate
-    });
+    // const reportData = await report.process(options);
 
+    const reportData = await report.process();
 
     const startTime = flightPoints ? flightPoints[0].timestamp : 0;
     reportData.forEach((toShow) => {
@@ -124,6 +106,7 @@ async function ltranslate(text, destLang) {
         return r.translatedText;
     } catch(e) {
         // Probably no translation server
+      console.error(e)
     }
 
     return text;
@@ -224,5 +207,4 @@ function osmFilterMapData(data, pos, options) {
     return results;
 }
 
-
-main(flightID);
+export {main};
