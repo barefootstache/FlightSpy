@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>FlightSpy</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+  </head>
+  <body>
+    <div class="main">
+      <h2>Instructions</h2>
+      <ol>
+        <li>Visit <a href="https://www.flightradar24.com/" target="_blank">https://www.flightradar24.com/</a></li>
+        <li>Search for the code number (top right)</li>
+        <li>Click on the 'Recent or schedule flights" option.<br>(this should open a page of flight history for that route)</li>
+        <li>Review the list to find a complete flight</li>
+        <li>Click on the 'Play' button</li>
+      </ol>
+      <h3>Option 1: Use the flightradar24 URL</h3>
+      <label for="flightURL">Flight URL</label>
+      <input type="text" id="flightURL" name="flightURL" value="" placeholder="https://www.flightradar24.com/data/flights/lh434#36e9026e">
+      <h3>Option 2: How to get this flight ID:</h3>
+      <p>Notice the URL contains both the route ID, followed by a #, and another ID - use this one</p>
+      <label for="flightID">Flight ID</label>
+      <input type="text" id="flightID" name="flightID" value="" placeholder="36e9026e">
+      <br>
+      <button id="submitBtn" type="submit">Run</button>
+    </div>
+  
+  </body>
+  <script src="src/main.js"></script>
+</html>
